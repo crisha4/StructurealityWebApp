@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users - StructuReality Admin</title>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .stat-card-hover {
+        transition: all 0.3s ease;
+      }
+
+      .stat-card-hover:hover {
+        transform: translateY(-4px);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Sidebar -->
+    <aside
+      class="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-[#0f1b3f] to-[#2a1b63] text-white shadow-xl z-50"
+    >
+      <div class="p-6 border-b border-indigo-700">
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-white rounded-lg flex items-center justify-center"
+          >
+            <i class="fas fa-cube text-indigo-700 text-xl"></i>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold">StructuReality</h1>
+            <p class="text-xs text-indigo-300">Admin Portal</p>
+          </div>
+        </div>
+      </div>
+
+      <nav class="mt-6 px-4">
+        <a
+          href="index.html"
+          class="flex items-center space-x-3 px-4 py-3 rounded-lg text-indigo-200 hover:bg-indigo-700 mb-2"
+        >
+          <i class="fas fa-home w-5"></i>
+          <span class="font-medium">Dashboard</span>
+        </a>
+
+        <a
+          href="users.html"
+          class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-indigo-700 text-white mb-2"
+        >
+          <i class="fas fa-users w-5"></i>
+          <span class="font-medium">Users</span>
+        </a>
+
+        <a
+          href="lessons.html"
+          class="flex items-center space-x-3 px-4 py-3 rounded-lg text-indigo-200 hover:bg-indigo-700 mb-2 transition"
+        >
+          <i class="fas fa-book w-5"></i>
+          <span class="font-medium">Lessons</span>
+        </a>
+
+        <a
+          href="#"
+          class="flex items-center space-x-3 px-4 py-3 rounded-lg text-indigo-200 hover:bg-indigo-700 mb-2 transition"
+        >
+          <i class="fas fa-chart-line w-5"></i>
+          <span class="font-medium">Analytics</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-64 right-0 bg-white shadow-md z-40">
+      <div class="px-8 py-4 flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800">Users</h2>
+          <p class="text-sm text-gray-500">Manage system users</p>
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <button class="p-2 hover:bg-gray-100 rounded-lg transition">
+            <i class="fas fa-bell text-gray-600"></i>
+          </button>
+          <div
+            class="flex items-center space-x-3 px-4 py-2 hover:bg-gray-100 rounded-lg transition cursor-pointer"
+          >
+            <div
+              class="w-8 h-8 bg-indigo-200 rounded-full flex items-center justify-center"
+            >
+              <i class="fas fa-user text-indigo-700 text-sm"></i>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-gray-800">Admin User</p>
+              <p class="text-xs text-gray-500">admin@admin.com</p>
+            </div>
+          </div>
+
+          <a
+            href="login.html"
+            title="Logout"
+            class="p-2 hover:bg-gray-100 rounded-lg transition"
+          >
+            <i class="fas fa-sign-out-alt text-gray-600"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="ml-64 p-8 mt-20">
+      <!-- Search and Filters -->
+      <div
+        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6"
+      >
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-4 flex-1">
+            <div class="flex-1">
+              <div class="relative">
+                <i
+                  class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+                ></i>
+                <input
+                  type="text"
+                  placeholder="Search users by name, email, or username..."
+                  class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+            </div>
+
+            <select
+              class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              <option>All Status</option>
+              <option>Active</option>
+              <option>Idle</option>
+              <option>Inactive</option>
+            </select>
+
+            <select
+              class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              <option>All Time</option>
+              <option>Today</option>
+              <option>This Week</option>
+              <option>This Month</option>
+            </select>
+          </div>
+
+          <div class="flex items-center space-x-3 ml-6">
+            <button
+              class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition"
+            >
+              <i class="fas fa-filter mr-2"></i>Filter
+            </button>
+
+            <button
+              class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+            >
+              <i class="fas fa-user-plus mr-2"></i>Add User
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Users Table (Datatables can be used as alternative here) -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+        <div class="p-6 border-b border-gray-100">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-800">All Users</h3>
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+              <span>Showing 1-10 of 2,847</span>
+            </div>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr
+                class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50"
+              >
+                <th class="px-6 py-4">
+                  <input type="checkbox" class="rounded border-gray-300" />
+                </th>
+                <th class="px-6 py-4">User</th>
+                <th class="px-6 py-4">Email</th>
+                <th class="px-6 py-4">Streak</th>
+                <th class="px-6 py-4">Progress</th>
+                <th class="px-6 py-4">Last Active</th>
+                <th class="px-6 py-4">Status</th>
+                <th class="px-6 py-4">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm divide-y divide-gray-100">
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4">
+                  <input type="checkbox" class="rounded border-gray-300" />
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-3">
+                    <div
+                      class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center"
+                    >
+                      <span class="text-indigo-600 font-semibold">CR</span>
+                    </div>
+                    <div>
+                      <p class="font-medium text-gray-800">Crisha Re</p>
+                      <p class="text-gray-500 text-xs">@crishaa</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-gray-600">crisha@gmail.com</td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold"
+                  >
+                    🔥 12 days
+                  </span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-2">
+                    <div
+                      class="flex-1 bg-gray-200 rounded-full h-2 max-w-[100px]"
+                    >
+                      <div
+                        class="bg-indigo-600 h-2 rounded-full"
+                        style="width: 75%"
+                      ></div>
+                    </div>
+                    <span class="text-xs text-gray-600">75%</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-gray-600">2 hours ago</td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold"
+                  >
+                    Active
+                  </span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-2">
+                    <button class="text-indigo-600 hover:text-indigo-700">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="text-gray-600 hover:text-gray-700">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="text-red-600 hover:text-red-700">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4">
+                  <input type="checkbox" class="rounded border-gray-300" />
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-3">
+                    <div
+                      class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center"
+                    >
+                      <span class="text-green-600 font-semibold">BJ</span>
+                    </div>
+                    <div>
+                      <p class="font-medium text-gray-800">Buko Juice</p>
+                      <p class="text-gray-500 text-xs">@what</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-gray-600">shhs@gmail.com</td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold"
+                  >
+                    🔥 5 days
+                  </span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-2">
+                    <div
+                      class="flex-1 bg-gray-200 rounded-full h-2 max-w-[100px]"
+                    >
+                      <div
+                        class="bg-indigo-600 h-2 rounded-full"
+                        style="width: 40%"
+                      ></div>
+                    </div>
+                    <span class="text-xs text-gray-600">40%</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-gray-600">5 hours ago</td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-semibold"
+                  >
+                    Idle
+                  </span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-2">
+                    <button class="text-indigo-600 hover:text-indigo-700">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="text-gray-600 hover:text-gray-700">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="text-red-600 hover:text-red-700">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4">
+                  <input type="checkbox" class="rounded border-gray-300" />
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-3">
+                    <div
+                      class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center"
+                    >
+                      <span class="text-yellow-600 font-semibold">HS</span>
+                    </div>
+                    <div>
+                      <p class="font-medium text-gray-800">Home Shutz</p>
+                      <p class="text-gray-500 text-xs">@what</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-gray-600">bakt@gmail.com</td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold"
+                  >
+                    🔥 3 days
+                  </span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-2">
+                    <div
+                      class="flex-1 bg-gray-200 rounded-full h-2 max-w-[100px]"
+                    >
+                      <div
+                        class="bg-indigo-600 h-2 rounded-full"
+                        style="width: 25%"
+                      ></div>
+                    </div>
+                    <span class="text-xs text-gray-600">25%</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-gray-600">1 day ago</td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-semibold"
+                  >
+                    Inactive
+                  </span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-2">
+                    <button class="text-indigo-600 hover:text-indigo-700">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="text-gray-600 hover:text-gray-700">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="text-red-600 hover:text-red-700">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="p-6 border-t border-gray-100">
+          <div class="flex items-center justify-between">
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition disabled:opacity-50"
+              disabled
+            >
+              <i class="fas fa-chevron-left mr-2"></i>Previous
+            </button>
+            <div class="flex items-center space-x-2">
+              <button class="px-3 py-2 bg-indigo-600 text-white rounded-lg">
+                1
+              </button>
+              <button
+                class="px-3 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+              >
+                2
+              </button>
+              <button
+                class="px-3 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+              >
+                3
+              </button>
+              <span class="px-3 py-2 text-gray-500">...</span>
+              <button
+                class="px-3 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+              >
+                285
+              </button>
+            </div>
+            <button
+              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition"
+            >
+              Next<i class="fas fa-chevron-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
